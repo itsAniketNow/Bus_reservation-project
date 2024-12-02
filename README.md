@@ -132,11 +132,12 @@ Navigate to http://127.0.0.1:8000 in your browser to access the application.
 bus-reservation-system/
 │
 ├── templates/                  # HTML templates for frontend pages
-│   ├── base.html               # Base template for all pages
+│   ├── home.html               # Home template for all pages
 │   ├── signup.html             # Signup page
 │   ├── login.html              # Login page
-│   ├── booking.html            # Bus booking page
-│   └── my_reservations.html    # User's reservation management
+│   ├── ticket_booking.html     # Bus booking page
+|   ├── ticket_history.html     # Bus booking history
+│   └── confirmation.html       # Confirmation of ticket booking
 │
 ├── static/                     # Static files (CSS, JS, Images)
 │   ├── css/
