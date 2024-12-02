@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Routes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center">Search Routes</h1>
+
+        <form method="POST" class="row g-3 mt-4">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <input type="text" id="start_city" name="start_city" class="form-control" placeholder="Enter starting city" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="destination" name="destination" class="form-control" placeholder="Enter destination city" required>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+        </form>
+
+        {% if routes %}
+        <h2 class="mt-5">Available Routes</h2>
+        <ul class="list-group">
+            {% for route in routes %}
+            <li class="list-group-item">
+                {{ route.start_city }} to {{ route.destination }}
+                <a href="{% url 'ticket_booking' route.id %}" class="btn btn-success float-end">Book Ticket</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% elif routes is not None %}
+        <p class="text-muted mt-3">No routes found matching the criteria.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
